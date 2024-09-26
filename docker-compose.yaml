@@ -1,0 +1,8 @@
+version: "3"
+services:
+  server:
+    build: ./service2/
+    ports:
+      - "8000:5000"
+  # client:
+  #   build: ./service1/
