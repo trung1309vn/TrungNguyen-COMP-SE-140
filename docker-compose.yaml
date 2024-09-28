@@ -1,11 +1,11 @@
 version: "3"
 services:
   server:
-    build: ./service/
+    build: ./service2/
     ports:
       - "8080:8080"
   client:
-    build: ./service2/
+    build: ./service1/
     ports:
       - "8199:8199"
     network_mode: host

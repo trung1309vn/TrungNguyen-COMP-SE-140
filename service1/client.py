@@ -20,7 +20,6 @@ def home():
 
     response = requests.get('http://localhost:8080/?passkey=test')
     res = response.json()
-    print(res, file=sys.stderr)
     return render_template("index.html", \
         server_IPAddress = res["IP"],
         server_Processes = res["Processes"],
