@@ -1,8 +1,13 @@
 version: "3"
 services:
   server:
+    build: ./service/
+    ports:
+      - "8080:8080"
+  client:
     build: ./service2/
     ports:
-      - "8000:5000"
-  # client:
-  #   build: ./service1/
+      - "8199:8199"
+    network_mode: host
+    depends_on:
+      - server

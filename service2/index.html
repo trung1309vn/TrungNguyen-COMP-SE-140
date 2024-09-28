@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Exercise1</title>
+</head>
+ 
+<body>
+    <h2>Server:</h2>
+    <p>&emsp; IPAddress: {{server_IPAddress}}</p>
+    <p>&emsp; Processes: </p>
+    <ul>
+        {% for item in server_Processes %}
+            <li>&emsp;&emsp; {{item[0]}} {{item[1]}}</li>
+        {% endfor %}
+    </ul>
+    <p>&emsp; DiskSpace: {{server_DiskUsage}} GB</p>
+    <p>&emsp; LastBootTime: {{server_LastBootTime}}</p>
+    <h2>Client:</h2>
+    <p>&emsp; IPAddress: {{client_IPAddress}}</p>
+    <p>&emsp; Processes:</p>
+    <ul>
+        {% for item in client_Processes %}
+            <li>&emsp;&emsp; {{item[0]}} {{item[1]}}</li>
+        {% endfor %}
+    </ul>
+    <p>&emsp; DiskSpace: {{client_DiskUsage}} GB</p>
+    <p>&emsp; LastBootTime: {{client_LastBootTime}}</p>
+</body>
+ 
+</html>
