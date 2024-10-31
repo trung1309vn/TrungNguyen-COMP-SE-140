@@ -1,2 +1,0 @@
-Docker containers share with host machine files/folders that are defined in the Dockerfile, indicated by the command ADD/COPY or using shared memory with flag --volume.
-As for client container, it use shared network with host.

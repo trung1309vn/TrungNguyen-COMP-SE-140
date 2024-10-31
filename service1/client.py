@@ -7,12 +7,24 @@ import requests
 import json
 import sys
 import time
+import os
 
 start_time=time.time()
 
-server = Flask(__name__, template_folder="/client")
-@server.route('/', methods=['GET'])
+client = Flask(__name__, template_folder="/client")
+
+@client.route('/')
 def home():
+    return render_template("home.html")
+
+@client.route('/disconnect')
+def disconnect():
+    os.system("docker stop $(docker ps -q)")
+    os.system("docker rm $(docker ps -aq)")
+    return ""
+
+@client.route('/access', methods=['GET'])
+def access():
     global start_time
     while (time.time() - start_time <= 2.0):
         pass
@@ -39,4 +51,4 @@ def home():
     )
 
 if __name__ == "__main__":
-    server.run(host="0.0.0.0", port=8199)
+    client.run(host="0.0.0.0", port=8199)

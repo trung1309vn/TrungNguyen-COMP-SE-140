@@ -1,9 +1,11 @@
-CONTAINER ID   IMAGE                            COMMAND              CREATED              STATUS              PORTS                                       NAMES
-b26cc5fb3b06   trungnguyen-comp-se-140_client   "python client.py"   About a minute ago   Up About a minute                                               trungnguyen-comp-se-140_client_1
-0ff4b4ff5144   trungnguyen-comp-se-140_server   "./main"             About an hour ago    Up About a minute   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   trungnguyen-comp-se-140_server_1
+CONTAINER ID   IMAGE                            COMMAND                  CREATED          STATUS          PORTS                                               NAMES
+8e137924d44c   trungnguyen-comp-se-140_nginx    "/docker-entrypoint.…"   53 seconds ago   Up 28 seconds   80/tcp, 0.0.0.0:8198->8198/tcp, :::8198->8198/tcp   trungnguyen-comp-se-140_nginx_1
+82c4898c68d2   trungnguyen-comp-se-140_client   "python client.py"       54 seconds ago   Up 28 seconds   8199/tcp                                            trungnguyen-comp-se-140_client_1
+9ffecfbd66cc   trungnguyen-comp-se-140_server   "./main"                 48 minutes ago   Up 28 seconds   8080/tcp                                            trungnguyen-comp-se-140_server_1
 
-NETWORK ID     NAME                              DRIVER    SCOPE
-66d972e2da6c   bridge                            bridge    local
-facea43e9f67   host                              host      local
-f948cc4176ed   none                              null      local
-6b7629f68cfd   trungnguyen-comp-se-140_default   bridge    local
+NETWORK ID     NAME                                    DRIVER    SCOPE
+f9d1b0dd746d   bridge                                  bridge    local
+facea43e9f67   host                                    host      local
+f948cc4176ed   none                                    null      local
+b0e89f9da5c4   trungnguyen-comp-se-140_default         bridge    local
+294d4e86aa79   trungnguyen-comp-se-140_loadbalancing   bridge    local
