@@ -6,11 +6,18 @@ from datetime import datetime
 import requests
 import json
 import sys
+import time
+
+start_time=time.time()
 
 server = Flask(__name__, template_folder="/client")
-
 @server.route('/', methods=['GET'])
 def home():
+    global start_time
+    while (time.time() - start_time <= 2.0):
+        pass
+
+    start_time = time.time()
     hostname = socket.gethostname()
     IPAddr = socket.gethostbyname(hostname)
     processes = [[proc.pid, proc.name()] for proc in psutil.process_iter()]
@@ -18,7 +25,7 @@ def home():
     last_reboot = psutil.boot_time()
     last_reboot = datetime.fromtimestamp(last_reboot)
 
-    response = requests.get('http://localhost:8080/?passkey=test')
+    response = requests.get('http://server:8080/?passkey=test')
     res = response.json()
     return render_template("index.html", \
         server_IPAddress = res["IP"],

@@ -2,12 +2,31 @@ version: "3"
 services:
   server:
     build: ./service2/
-    ports:
-      - "8080:8080"
+    environment:
+      - PORT=8080
+    networks:
+      - loadbalancing
+
   client:
     build: ./service1/
-    ports:
-      - "8199:8199"
-    network_mode: host
+    environment:
+      - PORT=8199
+    networks:
+      - loadbalancing
+    deploy:
+      replicas: 3
     depends_on:
       - server
+  
+  nginx:
+    build: ./nginx_service
+    ports:
+     - "8198:8198"
+    networks:
+      - loadbalancing
+    depends_on:
+      - client
+      # - server
+
+networks:
+  loadbalancing:
